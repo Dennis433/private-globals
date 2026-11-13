@@ -370,9 +370,9 @@ footer{background:var(--smoke);border-top:1px solid var(--line);padding:72px 80p
       </div>
       <div class="form-row">
         <div class="fg"><label>Meeting Location</label><input type="text" placeholder="City or Venue" required/></div>
-        <div class="fg"><label>Preferred Date</label><input type="date" required/></div>
+        <div class="fg"><label>Preferred Date</label><input type="text" id="meetDate" placeholder="DD/MM/YYYY e.g. 25/12/2026" required/></div>
       </div>
-      <div class="fg"><label>Preferred Time</label><input type="time" required/></div>
+      <div class="fg"><label>Preferred Time</label><input type="text" id="meetTime" placeholder="e.g. 3:00 PM" required/></div>
       <div style="margin-top:8px"><button type="submit" class="btn-gold">Proceed to Payment</button></div>
     </form>
   </div>
@@ -484,8 +484,8 @@ function goPayment(e){
   const phone = e.target.querySelector('input[type=tel]').value;
   const persons = e.target.querySelector('input[type=number]').value;
   const location = e.target.querySelectorAll('input[type=text]')[1].value;
-  const date = e.target.querySelector('input[type=date]').value;
-  const time = e.target.querySelector('input[type=time]').value;
+  const date = document.getElementById('meetDate').value;
+  const time = document.getElementById('meetTime').value;
 
   const tierLine = tier ? 'Tier: ' + tier + ' (' + amount + ')\n' : '';
   const sub = encodeURIComponent('Payment Request — Meet & Greet' + (tier ? ' (' + tier + ' ' + amount + ')' : '') + ' | Private Globals');
